@@ -9,10 +9,25 @@ const onGennerateSubmit = (e) => {
 
   if (url === '') {
     alert('Please enter a url');
-    return;
+  } else {
+    showSpinner();
+
+    setTimeout(() => {
+      hideSpinner();
+    }, 1000);
   }
 
   console.log(url, size);
 };
+
+const showSpinner = () => {
+  document.getElementById('spinner').style.display = 'block';
+};
+
+const hideSpinner = () => {
+  document.getElementById('spinner').style.display = 'none';
+};
+
+hideSpinner();
 
 form.addEventListener('submit', onGennerateSubmit);
