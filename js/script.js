@@ -17,6 +17,11 @@ const onGennerateSubmit = (e) => {
     setTimeout(() => {
       hideSpinner();
       generateQRCode(url, size);
+
+      setTimeout(() => {
+        const saveUrl = qr.querySelector('img').src;
+        createSaveBtn(saveUrl);
+      }, 50);
     }, 1000);
   }
 
@@ -47,7 +52,7 @@ const createSaveBtn = (saveUrl) => {
   const link = document.createElement('a');
   link.id = 'save-link';
   link.classList =
-    'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-1/3 m-outo my-5';
+    'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 rounded w-1/3 m-outo my-5';
   link.href = saveUrl;
   link.download = 'qrcode.png';
   link.innerHTML = 'Save Image';
